@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserProfile } from '../../interfaces/user.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule 
   ],
   templateUrl: './add-user.component.html',
@@ -18,7 +20,6 @@ export class AddUserComponent {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      id: [null, Validators.required],
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_]+$')]],

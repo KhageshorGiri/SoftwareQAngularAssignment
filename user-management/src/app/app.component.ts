@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderLayoutComponent } from './header-layout/header-layout.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
@@ -9,6 +9,7 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
   standalone: true,
   imports: [
     RouterOutlet,
+    RouterModule,
     HeaderLayoutComponent,
     UserListComponent,
     AddUserComponent

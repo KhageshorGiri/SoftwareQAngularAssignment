@@ -7,11 +7,14 @@
           <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
           <input
             type="text"
-            id="firstName"
             formControlName="firstName"
-            class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            class="input input-bordered  w-full"
             placeholder="Enter your first name"
           />
+          <div *ngIf="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
+            <div *ngIf="userForm.get('firstName')?.errors?.['required']"> <small class="text-error">First name is required</small></div>
+          </div>
+         
         </div>
   
         <!-- Last Name Field -->
@@ -19,11 +22,13 @@
           <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
           <input
             type="text"
-            id="lastName"
             formControlName="lastName"
-            class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            class="input input-bordered  w-full "
             placeholder="Enter your last name"
           />
+          <div *ngIf="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
+            <div *ngIf="userForm.get('lastName')?.errors?.['required']"> <small class="text-error">Last name is required</small></div>
+          </div>
         </div>
   
         <!-- Username Field -->
@@ -31,26 +36,30 @@
           <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
           <input
             type="text"
-            id="username"
             formControlName="username"
-            class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            class="input input-bordered  w-full "
             placeholder="Choose a username"
           />
+          <div *ngIf="userForm.get('username')?.invalid && (userForm.get('username')?.dirty || userForm.get('username')?.touched)">
+            <div *ngIf="userForm.get('username')?.errors?.['required']"> <small class="text-error">Username name is required</small></div>
+          </div>
         </div>
   
         <!-- Department Field -->
         <div class="form-group">
           <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
           <select
-            id="department"
             formControlName="department"
-            class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            class="input input-bordered  w-full "
           >
             <option value="" disabled>Select a department</option>
             <option value="Marketing">Marketing</option>
             <option value="Management">Management</option>
             <option value="Maintenance">Maintenance</option>
           </select>
+          <div *ngIf="userForm.get('department')?.invalid && (userForm.get('department')?.dirty || userForm.get('department')?.touched)">
+            <div *ngIf="userForm.get('department')?.errors?.['required']"> <small class="text-error">Depertment is required</small></div>
+          </div>
         </div>
       </div>
   
@@ -58,9 +67,8 @@
       <div class="form-group flex items-center">
         <input
           type="checkbox"
-          id="isAdmin"
           formControlName="isAdmin"
-          class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+          class="h-6 w-6 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
         />
         <label for="isAdmin" class="ml-2 block text-sm font-medium text-gray-700">Is Admin</label>
       </div>
@@ -68,9 +76,9 @@
       <!-- Submit Button -->
       <button
         type="submit"
-        class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        [disabled]="userForm.invalid"
-      >
+        class="w-full inline-flex justify-center btn btn-active btn-primary"
+        [disabled]="userForm?.invalid"
+        >
         Submit
       </button>
     </form>
