@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header-layout',
   standalone: true,
   imports: [
-    RouterModule,
+    RouterModule
   ],
   templateUrl: './header-layout.component.html',
   styleUrl: './header-layout.component.css'

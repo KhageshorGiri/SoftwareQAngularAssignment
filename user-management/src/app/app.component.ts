@@ -8,8 +8,8 @@ import { AddUserComponent } from './pages/add-user/add-user.component';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     RouterModule,
+    RouterOutlet,
     HeaderLayoutComponent,
     UserListComponent,
     AddUserComponent

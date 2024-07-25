@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserProfile } from '../../interfaces/user.interface';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { UserListComponent } from '../user-list/user-list.component';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -17,7 +17,7 @@ import { Route, Router } from '@angular/router';
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
 })
-export class AddUserComponent {
+export class AddUserComponent implements OnInit {
   userForm!: FormGroup;
 
   constructor(
@@ -42,7 +42,7 @@ export class AddUserComponent {
         complete : () => {
           this.router.navigate(['/all-users']);
         },
-        error: (err) => alert("Error While Adding User.")
+        error: () => alert("Error While Adding User.")
       });
     } else {
       alert("Invalid User Form")

@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
    this.userServie.getUsers().subscribe({
     next: (data : UserProfile[] | undefined) => this.allUsers = data,
-    error : (error) => alert("Error Fetching User list")
+    error : () => alert("Error Fetching User list")
    });
   }
 
