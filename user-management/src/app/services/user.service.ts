@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserProfile } from '../interfaces/user.interface';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,13 +36,16 @@ export class UserService {
   constructor() { }
 
   // Create a new user
-  addUser(user: UserProfile): void {
+  addUser(user: UserProfile): Observable<void> {
+    var newUserId = this.users[this.users.length-1].id + 1;
+    user.id = newUserId;
     this.users.push(user);
+    return of();
   }
 
   // Read all users
-  getUsers(): UserProfile[] {
-    return this.users;
+  getUsers(): Observable<UserProfile[]> {
+    return of(this.users);
   }
 
   // Read a single user by ID
@@ -49,16 +53,8 @@ export class UserService {
     return this.users.find(user => user.id === id);
   }
 
-  // Update a user by ID
-  updateUser(id: number, updatedUser: UserProfile): void {
-    const index = this.users.findIndex(user => user.id === id);
-    if (index !== -1) {
-      this.users[index] = updatedUser;
-    }
-  }
-
-  // Delete a user by ID
-  deleteUser(id: number): void {
-    this.users = this.users.filter(user => user.id !== id);
-  }
 }
+function Of(users: UserProfile[]): UserProfile[] {
+  throw new Error('Function not implemented.');
+}
+

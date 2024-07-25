@@ -2,13 +2,17 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserProfile } from '../../interfaces/user.interface';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
+import { UserListComponent } from '../user-list/user-list.component';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    UserListComponent
   ],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.css'
@@ -16,7 +20,10 @@ import { CommonModule } from '@angular/common';
 export class AddUserComponent {
   userForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private router:Router,
+    private fb: FormBuilder,
+    private userService : UserService) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -31,10 +38,14 @@ export class AddUserComponent {
   onSubmit(): void {
     if (this.userForm.valid) {
       const userData: UserProfile = this.userForm.value;
-      console.log('User Data:', userData);
-      // Perform the necessary action (e.g., send data to the server)
+      this.userService.addUser(userData).subscribe({
+        complete : () => {
+          this.router.navigate(['/all-users']);
+        },
+        error: (err) => alert("Error While Adding User.")
+      });
     } else {
-      console.log('Form is invalid');
+      alert("Invalid User Form")
     }
   }
 }

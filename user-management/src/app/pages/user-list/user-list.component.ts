@@ -19,13 +19,16 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 })
 export class UserListComponent implements OnInit {
 
-  allUsers : UserProfile[] = [];
+  allUsers : UserProfile[] | undefined = [];
 
   constructor(private userServie : UserService) {
   }
 
   ngOnInit(): void {
-    this.allUsers = this.userServie.getUsers();
+   this.userServie.getUsers().subscribe({
+    next: (data : UserProfile[] | undefined) => this.allUsers = data,
+    error : (error) => alert("Error Fetching User list")
+   });
   }
 
 
