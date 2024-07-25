@@ -1,1 +1,12 @@
-<p>user-detail works!</p>
+<div class="card lg:card-side bg-base-100 shadow-xl m-5">
+    <div class="card-body">
+        <h2 class="card-title">WelCome to UserDetails Page</h2>
+        <div *ngIf="user">
+            <h2><strong>Full Name : </strong>{{ user.firstName }} {{ user.lastName }}</h2>
+            <p><strong>ID:</strong> {{user.id}}</p>
+            <p><strong>UserName : </strong> {{ user.username }}</p>
+            <p><strong>Admin : </strong> {{ user.isAdmin }}</p>
+            <p><strong>Department : </strong> {{ user.department }}</p>
+        </div>
+    </div>
+</div>

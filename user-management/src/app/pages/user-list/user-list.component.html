@@ -8,31 +8,20 @@
       <table class="table table-sm table-striped">
         <thead class="thead-light">
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
+          <tr *ngFor="let user of allUsers" [ngClass]="{'admin': user.isAdmin}">
+            <td>
+              <a [routerLink]="['/details', user.id]">{{ user.firstName }}</a>
+            </td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.department}}</td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+         
         </tbody>
       </table>
     </div>
