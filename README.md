@@ -20,7 +20,7 @@ Ensure you have the following installed:
 
 2. **Navigate into the project directory:**
      ```bash
-     cd your-repository
+     cd SoftwareQAngularAssignment/user-management
 
 3. **Install the project dependencies:**
    ```bash
