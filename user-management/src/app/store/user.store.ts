@@ -1,6 +1,6 @@
 import { ComponentStore } from '@ngrx/component-store';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { UserProfile } from '../interfaces/user.interface';
 import { UserState } from '../interfaces/userstate.interface';
 
